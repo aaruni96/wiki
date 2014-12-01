@@ -1,0 +1,130 @@
+Project Wiki.
+
+When you do stuff, update the changelog!
+
+Things it is expected to do :
+	Make new files.			#done						#super waala done
+	Read old files.			#done						#super waala done
+	Overwrite old files.		#done						#integrated into module 1
+	Provide search feature.		#done						#plain old done
+	Provide index feature.		#nix specific implementation done
+
+	[Provide user login]		#done(new)
+	[Provide user register]		#done(new)
+	[Provide logs]									#will be integrated into each module
+	[Password hash]			#done
+	
+Miscellaneous Things related to the Wiki :
+	Documentation.
+		ReadMe: 
+			What is it?
+			Why use it?
+			How to use it?
+			Name/version number.
+		Internal comments.
+	Content.
+		Make sample content.
+			May copy from wikipedia.
+			Include acknowledgments.
+			Don't copy from proprietary sources.
+	Testing.
+		Test it under against various parameters for software stability, response speed, robustness.
+			Should never abruptly terminate. Must always write a log file on error. Must display a user friendly error.
+	Porting.
+		Must port to blue-screen TC++ in school.
+			Must ensure not to write too much *nix specific code.
+			All code must run in target computer dos prompt.
+			Code should also run independently of target computer. Will need to distribute and test.
+	Packaging.
+		An installer script and/or an installer package may be provided.
+			Make sure all the paths are as expected by the program (compiled binary).
+			
+Directory Structure :
+	Code :
+		modules:
+			Folder holds all modules for the program compilation. only needed in pre-compilation stage. May package as source.
+			Edit : No more modules. Just one huge file.
+		content:
+			Folder holds all runtime content, except the binary file. Will contain subfolders.
+			Logs:
+				Holds all logs. Contains user logs and error logs as two separate files, upto inf size. (Be careful here, don't want QIRC situational logs).
+				Edit : merged user logs and error logs. Have one huge debug log now. All the best to anyone trying to debug it!
+			Data:
+				Holds all data, along with an index file.
+			User:
+				Holds user login and data in two separate files. (or in concurrent lines in same file?)
+				Edit : two files it is.
+				
+Timeline/Changelog:
+
+	16 August 2014
+		Formally started the project. Wrote this file. Wrote write module, read module, index module(nix), search module. None of today's work will go into the final form as it is right now. I have functionality, will need to integrate everything, add logging functionality, and make things cleaner. Added pwd hash to expected functions.
+		
+	27 August 2014
+		Forgot that the file also has a changelog. But doesn't matter. Rewrote the write module, edited the read module, wrote a register module. Edited the file to remind me to update the changelog. Need to integrate logging into the modules.
+		
+	30 August 2014
+		Wrote the login module. Now that all individual modules are done, need to write the main module, to integrate everything and provide internal logging. Other than that, still need to write the internal documentation, the external documentation and get my content. Also need to write some installer scripts to make the requisite files and folders for the wiki to work.
+		Wrote main.cpp. Done with logging feature too. Just need to make it "shippable now".
+		Added internal documentation to the code.
+	31 August 2014
+		00:12:10 IST. Still adding finesse to the main.cpp file. Done logging. Done file paths. Done some basic level debugging. I think I may now freeze the main.cpp file.
+		Uploaded main.cpp to github. Now, I need sleep.
+	2 September 2014
+		Added another function to main.cpp, to print contents of index file. Most functions fail if the directory structure isn't as expected. Need to either manually check for those, or think of something else.
+		Wrote "WhatIs" document.
+		Wrote "Manual" document.
+		
+	9 September 2014
+		Fixed a tiny error in the read function, leading to an inf loop in case the file wasn't found. Now it displays an error and logs the same in case of a 404.
+		Need to add a class, somehow in the code. Will be done within the week.
+	6 October 2014
+		Restared mainwithclass.cpp . I'm mostly doing copy and paste, with all the file IO inside a class. If I don't play DOTA 2 today (highly unlikely), I can finish an executable before sleeping.
+		Found a bug in logging function. I never coded it to log usernames. Going to incorporate it in the logging functinos this time.
+		Logging functions are exceptions. They deal with disk IO, but are used outside classes too.
+		
+	24 October 2014
+		mainwithclass.cpp now compiles and executes.
+		Improved logging routines to incorporate user names into logs.
+		Lots of functions deal with I/O but are outside classes. Only userspace IO is in the class.
+		Need to test my wiki. Looking for alpha testers.
+		
+	27 October 2014
+		Fixed a path issue in mainwithclass.cpp. Now writes files where we expect it to.
+		Fixed the format used in log. All variables are separated with horizontal tabs.
+		Need to upload the new executables to give to testers.
+		
+	6 November 2014
+		Lost the changelog for 5th November. Its inconsequential. Just started porting to DOS then. I'm going to rework my port strategy anyways.
+		Fixed bugs with the view and the write functions. Made an error while adding them to classes. Corrected now.
+		Ported to dos, in the file mainfordos.cpp
+			Copied each function, and made the necessary changes.
+				Changed the directories.
+			Changed the header files, as required.
+			Reworked the search function to bypass the use of the index file.
+			I don't think I need the index function anymore. The prindex function can just system call the "DIR" command in realtime.
+			
+	13 November 2014
+		mainfordos.cpp was giving a few errors. Added stdio.h for the remove operation.
+		changed opening of file to open() from constructor open.
+		changed my copy of TC++. It now spits out executables.
+		
+		added logout function in mainwithclass.cpp
+		debugged the logout function
+		added a default clause to mainwithclass.cpp
+		
+		added logout function to mainfordos.cpp
+		added a default clause to mainfordos.cpp
+		index() function in mainfordos.cpp is misbehaving. Hopefully this is a machine dependent thing.
+		DIR system call of DOS poses some serious limitations. Only way to overcome is to dumb down my program. Will have to consult with the teacher.
+	
+	14 November 2014
+		got the code reviewed by the teacher. mainfordos idea is dropped. am going to submit the *nix implementation.
+		wrote mainfinal.cpp . has all of the good stuff, and none of the mistakes, @542 lines of code.
+		got to finish the documentation, and get it all printed
+		made a final repo
+		
+	19 November 2014
+		the login function no longer works if the user is already logged in.
+		
+		*NOTE* : remember to replace final repo with updates
